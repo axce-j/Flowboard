@@ -25,6 +25,7 @@ import { InviteDto } from './dto/invite.dto';
 import { AcceptInviteDto } from './dto/accept-invite.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
+import { CreateOrgDto } from './dto/create-org.dto';
 
 export const MAX_ORGS_PER_USER = 4;
 
@@ -115,11 +116,14 @@ export class AuthService {
       relations: ['organization'],
     });
 
-    if (activeMemberships.length === 0) {
-      throw new ForbiddenException(
-        'Your account has no active organization membership yet. Wait for an invite to be accepted or contact an administrator.',
-      );
-    }
+	if (activeMemberships.length === 0) {
+		// No longer a hard lockout — this is the "acting as bare self,
+		// outside any org" window. Same shape as a pre-org token, just with
+		// an empty org list, so a user with zero orgs can still reach
+		// /auth/create-org (or wait out an invite) instead of being bricked.
+		const preOrgToken = this.signPreOrgToken(user.id);
+		return { preOrgToken, organizations: [] };
+	  }
 
     if (activeMemberships.length === 1) {
       const membership = activeMemberships[0];
@@ -151,6 +155,36 @@ export class AuthService {
     return { accessToken };
   }
 
+  async createOrg(userId: string, dto: CreateOrgDto) {
+    await this.enforceOrgCapOrThrow(userId);
+
+    const result = await this.dataSource.transaction(async (manager) => {
+      const organization = await manager.save(Organization, {
+        name: dto.organizationName,
+      });
+
+      const membership = await manager.save(OrganizationMembership, {
+        userId,
+        organizationId: organization.id,
+        role: 'owner',
+        status: 'active',
+        joinedAt: new Date(),
+      });
+
+      return { organization, membership };
+    });
+
+    const accessToken = this.signFullToken(
+      userId,
+      result.organization.id,
+      result.membership.role,
+    );
+
+    return {
+      accessToken,
+      organization: { id: result.organization.id, name: result.organization.name },
+    };
+  }
   async invite(actor: AuthenticatedUser, dto: InviteDto) {
     if (!actor.orgId) {
       throw new ForbiddenException('Select an organization before inviting members.');

@@ -12,6 +12,7 @@ import { InviteDto } from './dto/invite.dto';
 import { AcceptInviteDto } from './dto/accept-invite.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
+import { CreateOrgDto } from './dto/create-org.dto';
 
 // No OrgScopeGuard on this controller — auth endpoints run before an org is
 // selected, or (invite) use a route-specific combination instead of the
@@ -47,6 +48,18 @@ export class AuthController {
   selectOrg(@CurrentUser() user: AuthenticatedUser, @Body() dto: SelectOrgDto) {
     return this.auth.selectOrg(user.userId, dto);
   }
+
+
+  @ApiBearerAuth()
+  @ApiOperation({ summary: 'Create a new organization owned by the current user' })
+  @ApiResponse({ status: 201, description: 'Org created, returns a full org-scoped access token' })
+  @ApiResponse({ status: 400, description: '4-organization limit reached' })
+  @UseGuards(JwtAuthGuard)
+  @Post('create-org')
+  createOrg(@CurrentUser() user: AuthenticatedUser, @Body() dto: CreateOrgDto) {
+    return this.auth.createOrg(user.userId, dto);
+  }
+
 
   // Inviting requires an org-scoped session (need to know which org + role
   // is inviting) — org/role membership is re-verified against the token
