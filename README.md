@@ -2,15 +2,15 @@
 
 A lightweight internal content management application built with Next.js and TypeScript to streamline marketing content production.
 
-This project was created to explore workflow-driven application design, CRUD operations, and dashboard development by modelling a real content production pipeline used by internal marketing teams.
+This project was created to explore workflow-driven application design, CRUD operations, and dashboard development by modelling a real content production pipeline used by an internal marketing team.
 
-Unlike traditional project management platforms, this application intentionally focuses on a single shared workspace where team members collaborate on content creation, assign ownership, update progress, and move tasks through predefined production stages.
+The application provides a shared workspace where team members can create content tasks, assign ownership, update progress, and move work through predefined production stages. Rather than attempting to become a general-purpose project management platform, it focuses on one specific operational problem: managing the lifecycle of marketing content.
 
-Rather than trying to become a full-scale project management system, the application focuses on solving one business problem exceptionally well: managing the lifecycle of marketing content.
+This project represents an important step in my progression toward building software around real business workflows rather than simply building interfaces or generic CRUD applications.
 
 ## Live Demo
 
-https://team-task-calendar.onrender.com/
+<LIVE_DEMO_URL>
 
 ## Screenshots
 
@@ -18,11 +18,19 @@ https://team-task-calendar.onrender.com/
 
 (Add screenshot)
 
-### Task Management
+### Content Task Management
 
 (Add screenshot)
 
-### Workflow Board
+### Task Creation Modal
+
+(Add screenshot)
+
+### Production Workflow
+
+(Add screenshot)
+
+### Content Filtering
 
 (Add screenshot)
 
@@ -30,39 +38,24 @@ https://team-task-calendar.onrender.com/
 
 (Add screenshot)
 
+## Demo Videos
+
+* Client Walkthrough: <url>
+* Architecture & Decisions: <url>
+* Developer Reflection: <url>
+
 ## Features
 
-* Create new content tasks
-* Edit existing tasks
-* Delete tasks
+* Create content production tasks
+* Edit existing content tasks
+* Delete content tasks
 * Assign internal team members
 * Track production progress
-* Organize content by workflow stage
-* Filter tasks by status
-* Responsive dashboard
-* Modal-based task management
-* Lightweight monolithic architecture
-
-## Workflow
-
-Tasks progress through a structured content production pipeline:
-
-```text
-Idea
-   ↓
-Draft
-   ↓
-Ready
-   ↓
-Posted
-```
-
-Content can also be categorized by type, including:
-
-* Reels
-* Carousels
-
-This workflow was designed to mirror a real marketing team's content production process, making it easier to visualize work in progress and identify bottlenecks.
+* Organize tasks by workflow stage
+* Filter tasks by production status
+* Manage tasks through modal interfaces
+* Responsive dashboard experience
+* Shared team workspace
 
 ## Technologies Used
 
@@ -74,87 +67,41 @@ This workflow was designed to mirror a real marketing team's content production 
 
 ## Architecture Highlights
 
-This application was intentionally designed as a lightweight internal business tool.
-
-Instead of supporting multiple organizations, user accounts, or complex permission systems, it operates as a shared workspace protected by a single application password. Team members are selected from predefined internal users, keeping the application simple, efficient, and aligned with its intended use case.
-
-This design decision demonstrates an important software engineering principle: choosing an architecture that fits the business problem instead of introducing unnecessary complexity.
-
-## What I Learned
-
-During this project I gained experience with:
-
-* Building internal business applications
-* Designing workflow-oriented user interfaces
-* Creating reusable CRUD operations
-* Managing application state
-* Building dashboard-style interfaces
-* Designing reusable modal components
-* Structuring applications around business processes
-* Organizing data using workflow-driven models
-* Building focused software that solves a specific operational problem
+The application was intentionally designed as a lightweight monolithic internal tool rather than a multi-tenant platform. It operates around a single shared workspace protected by an application-level password, while team members are selected from predefined internal users. This keeps the architecture aligned with the actual use case and avoids introducing unnecessary authentication, organization, and permission complexity for a small internal team.
 
 ## Challenges
 
-Some of the challenges encountered during development included:
-
 * Designing an intuitive content production workflow
-* Keeping the interface simple while supporting multiple production stages
-* Managing form interactions efficiently
-* Building reusable modal components
-* Organizing application state across multiple views
-* Creating a dashboard that remained lightweight and easy to use
-* Designing around a real business workflow instead of generic task management
+* Supporting multiple production stages without adding unnecessary complexity
+* Managing task creation and editing through reusable modal interfaces
+* Keeping application state consistent across task interactions
+* Designing a simple dashboard for an operational workflow
+* Translating a real marketing process into a usable software interface
 
-These challenges reinforced the importance of balancing usability, maintainability, and business requirements during application development.
+## What I Learned
 
-## Installation
-
-```bash
-git clone https://github.com/axce-j/team-task-tracker.git
-
-cd team-task-tracker
-
-npm install
-
-npm run dev
-```
+* Designing interfaces around real business workflows rather than generic entities
+* Building reusable CRUD interactions within a focused application
+* Making architectural decisions based on actual product requirements
+* Balancing simplicity, usability, and maintainability in internal software
+* Modelling production processes as structured application workflows
 
 ## Looking Back
 
-This project marked an important shift in my development journey from building general-purpose applications to designing software around real business operations.
-
-Rather than adding features simply for complexity, I focused on creating a lightweight internal tool that solved a clearly defined operational need for managing marketing content production.
-
-Since completing this project, I have continued building larger systems involving:
-
-* Full-stack business applications
-* Workflow automation
-* Authentication and authorization systems
-* AI-powered platforms
-* Database architecture
-* Cloud deployment
-* Scalable application design
-* Product and platform engineering
-
-It reinforced one of the most valuable lessons in software engineering: the best architecture is not always the most complex one, but the one that best fits the problem being solved.
-
-I have intentionally preserved this project as part of my software engineering journey and as a record of my growth in designing business-focused applications.
+This project taught me that useful software does not always need to be large or technically complex. By focusing on a specific content production workflow, I was able to concentrate on how people actually use a system to complete work, rather than adding features simply to make the application appear more sophisticated. It reinforced the importance of understanding the problem first and choosing an architecture that is appropriate for the scale and requirements of the product.
 
 ## Future Improvements
 
-Potential future enhancements include:
-
 * Calendar-based content scheduling
 * Drag-and-drop workflow management
-* File and media attachments
 * Content approval workflows
-* Team notifications
-* Analytics dashboard
-* Role-based permissions
-* Search and advanced filtering
-* Activity history
-* Integration with social media publishing platforms
+* Team notification system
+* Activity history and audit tracking
+* Advanced search and filtering
+* Analytics for content production
+* Social media publishing integrations
+
+
 
 ## Author
 
