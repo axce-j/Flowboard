@@ -1,42 +1,26 @@
 # Content Planner
 
-A lightweight internal content management application built with Next.js and TypeScript to streamline marketing content production.
+A lightweight internal content management application built with Next.js and TypeScript to streamline the production of marketing content.
 
-This project was created to explore workflow-driven application design, CRUD operations, and dashboard development by modelling a real content production pipeline used by an internal marketing team.
+I built this project to explore how software can be designed around a specific business workflow rather than trying to solve every possible project-management problem. The application provides a shared workspace where team members can create content tasks, assign ownership, track progress, and move work through a defined production pipeline.
 
-The application provides a shared workspace where team members can create content tasks, assign ownership, update progress, and move work through predefined production stages. Rather than attempting to become a general-purpose project management platform, it focuses on one specific operational problem: managing the lifecycle of marketing content.
-
-This project represents an important step in my progression toward building software around real business workflows rather than simply building interfaces or generic CRUD applications.
+The project represents an important step in my development journey toward building software that is not only technically functional, but also shaped around real operational requirements and business processes.
 
 ## Live Demo
 
-<LIVE_DEMO_URL>
+https://team-task-calendar.onrender.com/
 
 ## Screenshots
 
 ### Dashboard
 
-(Add screenshot)
-
 ### Content Task Management
-
-(Add screenshot)
 
 ### Task Creation Modal
 
-(Add screenshot)
+### Workflow Status
 
-### Production Workflow
-
-(Add screenshot)
-
-### Content Filtering
-
-(Add screenshot)
-
-### Mobile View
-
-(Add screenshot)
+### Mobile Dashboard
 
 ## Demo Videos
 
@@ -46,16 +30,35 @@ This project represents an important step in my progression toward building soft
 
 ## Features
 
-* Create content production tasks
-* Edit existing content tasks
-* Delete content tasks
-* Assign internal team members
-* Track production progress
-* Organize tasks by workflow stage
-* Filter tasks by production status
-* Manage tasks through modal interfaces
-* Responsive dashboard experience
-* Shared team workspace
+### Content Workflow
+
+*From idea to publication*
+
+Content moves through a predefined production pipeline consisting of Idea, Draft, Ready, and Posted stages. This gives the team a simple way to understand the current state of every piece of content.
+
+### Task Management
+
+*Simple content operations*
+
+Team members can create, edit, and delete content tasks while maintaining the information needed to track production. The interface uses modal-based interactions to keep task management within the main dashboard workflow.
+
+### Team Assignment
+
+*Clear ownership of work*
+
+Tasks can be assigned to predefined internal team members, making responsibility visible within the shared workspace and helping the team understand who is responsible for each piece of content.
+
+### Workflow Filtering
+
+*Focus on what matters*
+
+Content can be filtered according to its current production status, allowing team members to focus on specific stages of the workflow rather than navigating through unrelated tasks.
+
+### Responsive Dashboard
+
+*Built for everyday use*
+
+The application provides a responsive dashboard interface so the internal workflow remains usable across different screen sizes without requiring a separate mobile application.
 
 ## Technologies Used
 
@@ -67,41 +70,34 @@ This project represents an important step in my progression toward building soft
 
 ## Architecture Highlights
 
-The application was intentionally designed as a lightweight monolithic internal tool rather than a multi-tenant platform. It operates around a single shared workspace protected by an application-level password, while team members are selected from predefined internal users. This keeps the architecture aligned with the actual use case and avoids introducing unnecessary authentication, organization, and permission complexity for a small internal team.
+The application was intentionally designed as a lightweight monolithic internal tool rather than a multi-tenant SaaS platform. It uses a single shared workspace protected by an application password, with team members represented as predefined internal users. This kept the implementation aligned with the actual scope of the project and avoided introducing authentication, organization management, and permission systems that were not required for its intended use.
 
 ## Challenges
 
-* Designing an intuitive content production workflow
-* Supporting multiple production stages without adding unnecessary complexity
-* Managing task creation and editing through reusable modal interfaces
-* Keeping application state consistent across task interactions
-* Designing a simple dashboard for an operational workflow
-* Translating a real marketing process into a usable software interface
+* Designing a simple content production workflow that clearly communicates the progression from Idea to Posted.
+* Keeping the interface lightweight while supporting multiple task states and team assignments.
+* Managing form interactions through reusable modal-based interfaces.
+* Organizing application state across task creation, editing, deletion, assignment, and filtering workflows.
+* Designing the application around a real internal business process rather than a generic task-management model.
 
 ## What I Learned
 
-* Designing interfaces around real business workflows rather than generic entities
-* Building reusable CRUD interactions within a focused application
-* Making architectural decisions based on actual product requirements
-* Balancing simplicity, usability, and maintainability in internal software
-* Modelling production processes as structured application workflows
+This project taught me that useful software does not need to be large or complicated; it needs to clearly solve the problem it was designed for.
 
 ## Looking Back
 
-This project taught me that useful software does not always need to be large or technically complex. By focusing on a specific content production workflow, I was able to concentrate on how people actually use a system to complete work, rather than adding features simply to make the application appear more sophisticated. It reinforced the importance of understanding the problem first and choosing an architecture that is appropriate for the scale and requirements of the product.
+Building the Content Planner shifted my thinking from simply implementing features to thinking more carefully about the workflow those features are meant to support. I learned that deliberately limiting a system can be just as important as adding capabilities, especially when the requirements are clear and the users are known. The project reinforced the idea that good engineering is about making appropriate decisions for the problem rather than automatically choosing the most sophisticated architecture.
 
 ## Future Improvements
 
 * Calendar-based content scheduling
 * Drag-and-drop workflow management
 * Content approval workflows
-* Team notification system
-* Activity history and audit tracking
-* Advanced search and filtering
-* Analytics for content production
+* Team notifications
+* Analytics and production metrics
+* Activity history
+* Role-based permissions
 * Social media publishing integrations
-
-
 
 ## Author
 
